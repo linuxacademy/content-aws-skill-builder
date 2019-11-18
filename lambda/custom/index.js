@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "";
+        const speakOutput = "I am your fairy godmother.  You can say I want to be an animal.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -18,13 +18,13 @@ const LaunchRequestHandler = {
     }
 };
 
-const HelloWorldIntentHandler = {
+const MakeAnimalIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MakeAnimalIntent';
     },
     handle(handlerInput) {
-        const speakOutput = "";
+        const speakOutput = "Poooooof! You are an animal.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -143,7 +143,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
+        MakeAnimalIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

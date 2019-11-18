@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "fairy godmother",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -24,20 +24,14 @@
                     "samples": []
                 },
                 {
-                    "name": "HelloWorldIntent",
-                    "slots": [],
+                    "name": "MakeAnimalIntent",
                     "samples": [
-                        "hello",
-                        "how are you",
-                        "say hi world",
-                        "say hi",
-                        "hi",
-                        "say hello world",
-                        "say hello"
+                       "make me an animal",
+                       "i want to be an animal",
+                       "i wish to be an animal"
                     ]
                 }
-            ],
-            "types": []
+            ]
         }
     }
 }

@@ -1,33 +1,9 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "amzn1.ask.skill.9c2197db-8882-4372-99fe-ca5b840cd99e",
+      "skill_id": "",
       "was_cloned": false,
-      "merge": {},
-      "resources": {
-        "manifest": {
-          "eTag": "8660faa1e3c3c3f1ef0e81285f7989c8"
-        },
-        "interactionModel": {
-          "en-US": {
-            "eTag": "f313408c337584f727b36059d72e8b55"
-          }
-        },
-        "lambda": [
-          {
-            "alexaUsage": [
-              "custom/default"
-            ],
-            "arn": "arn:aws:lambda:us-east-1:585804262281:function:linux-academy-skill-template",
-            "awsRegion": "us-east-1",
-            "codeUri": "lambda/custom",
-            "functionName": "linux-academy-skill-template",
-            "handler": "index.handler",
-            "revisionId": "94ba1732-45d0-4bcc-bccb-3207f67d275f",
-            "runtime": "nodejs8.10"
-          }
-        ]
-      }
+      "merge": {}
     }
   }
 }

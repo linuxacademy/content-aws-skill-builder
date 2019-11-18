@@ -16,6 +16,14 @@
                     "samples": []
                 },
                 {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
                     "name": "HelloWorldIntent",
                     "slots": [],
                     "samples": [
@@ -27,14 +35,6 @@
                         "say hello world",
                         "say hello"
                     ]
-                },
-                {
-                    "name": "AMAZON.NavigateHomeIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.FallbackIntent",
-                    "samples": []
                 }
             ],
             "types": []

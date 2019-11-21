@@ -45,16 +45,29 @@ const InProgressMakeAnimalIntent = {
         && request.dialogState === 'COMPLETED';
     },
     handle(handlerInput) {
-    
-      const erColor = handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name + ' ';
-      const erAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name + '!';
-      const color = handlerInput.requestEnvelope.request.intent.slots.color.value + ' ';
-      const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value + '!';  
-      const SpeechStartText = "Poof! You are an amazing ";
-      const erSpeechText = erSpeechStartText + erColor + erAnimal;
-      const speechText = speechStartText + color + animal;
-      const speechOutput = "Entity Resolution: " + erSpeechText + ". User words: " + speechText + ".";
       
+      var er_success = true;
+      const SpeechStartText = "Poof! You are an amazing ";
+      const color = handlerInput.requestEnvelope.request.intent.slots.color.value + ' ';
+      const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value + '!'; 
+      const speechText = SpeechStartText + color + animal;
+      
+      try {
+        handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name;
+        handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name;
+      } catch(error) {
+          er_success = false;
+      }
+      
+      if (er_success) {
+        const erColor = handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name + ' ';
+        const erAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name + '!';
+        const erSpeechText = SpeechStartText + erColor + erAnimal;
+        var speechOutput = "Entity Resolution: " + erSpeechText + ". User words: " + speechText + ".";
+      } else {
+        speechOutput = "Entity Resolution: No resolutions" + ". User words: " + speechText + ".";
+      } 
+
       return handlerInput.responseBuilder
         .speak(speechOutput)
         .getResponse();

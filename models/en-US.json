@@ -25,13 +25,113 @@
                 },
                 {
                     "name": "MakeAnimalIntent",
+                    "slots": [
+                        {
+                            "name": "animal",
+                            "type": "ANIMAL_TYPE",
+                            "samples": [
+                                "i want to be a {animal}",
+                                "i want to be an {animal}",
+                                "{animal}"
+                            ]
+                        },
+                        {
+                            "name": "color",
+                            "type": "ANIMAL_COLOR",
+                            "samples": [
+                                "I want to be {color}",
+                                "{color}"
+                            ]
+                        }
+                    ],
                     "samples": [
                        "make me an animal",
-                       "i want to be an animal",
-                       "i wish to be an animal"
+                       "i want to be a {animal}",
+                       "i want to be an {animal}",
+                       "i want to be {color}"
                     ]
                 }
+            ],
+            "types": [
+                {
+                    "name": "ANIMAL_TYPE",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "animal",
+                                "synonyms": [
+                                    "tiger",
+                                    "chicken"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ANIMAL_COLOR",
+                    "values": [
+                        {
+                          "name": {
+                              "value": "color",
+                              "synonyms": [
+                                  "purple",
+                                  "green"
+                              ]
+                           }
+                        }
+                    ]
+                }
+
             ]
-        }
+        },
+        "dialog": {
+            "intents": [
+                {
+                "name": "MakeAnimalIntent",
+                "confirmationRequired": false,
+                "prompts": {},
+                "slots": [
+                    {
+                        "name": "animal",
+                        "type": "ANIMAL_TYPE",
+                        "elicitationRequired": true,
+                        "confirmationRequired": false,
+                        "prompts": {
+                            "elicitation": "Elicit.Intent-MakeAnimalIntent.IntentSlot-animal"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": "ANIMAL_COLOR",
+                        "elicitationRequired": true,
+                        "confirmationRequired": false,
+                        "prompts": {
+                            "elicitation": "Elicit.Intent-MakeAnimalIntent.IntentSlot-color"
+                        }
+                    }
+                ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Intent-MakeAnimalIntent.IntentSlot-animal",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Cooool! I love being an animal!  What animal do you want to be?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Intent-MakeAnimalIntent.IntentSlot-color",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Awesome! What color do you want to be?"
+                    }
+                ]
+            }
+        ]
     }
 }

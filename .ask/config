@@ -1,7 +1,7 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "amzn1.ask.skill.a45240a2-f250-4c9a-8742-5d773c321c05",
+      "skill_id": "amzn1.ask.skill.eccb3fea-8ac5-4dd6-94f1-baa2802f292f",
       "was_cloned": false,
       "merge": {},
       "resources": {
@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "ca9abe7b99981dcc5af854211af36ec0"
+            "eTag": "fa3d4635c851f3ea11263e4f2c8dde1b"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "alexa-skill-fairy-godmother",
             "handler": "index.handler",
-            "revisionId": "34381373-d4dc-49e7-9b3f-bd49e5064e31",
+            "revisionId": "70efa05c-13ec-45e0-8279-3ff085b44c6f",
             "runtime": "nodejs8.10"
           }
         ]

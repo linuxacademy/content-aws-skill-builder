@@ -18,13 +18,59 @@ const LaunchRequestHandler = {
     }
 };
 
+
+const InProgressMakeAnimalIntent = {
+    canHandle(handlerInput) {
+      const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'MakeAnimalIntent'
+        && request.dialogState !== 'COMPLETED';
+    },
+    handle(handlerInput) {
+      const currentIntent = handlerInput.requestEnvelope.request.intent;
+  
+      return handlerInput.responseBuilder
+        .addDelegateDirective(currentIntent)
+        .getResponse();
+    }
+  };
+  
+  const CompletedMakeAnimalIntent = {
+    canHandle(handlerInput) {
+      const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'MakeAnimalIntent'
+        && request.dialogState === 'COMPLETED';
+    },
+    handle(handlerInput) {
+    
+      const erColor = handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name + ' ';
+      const erAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name + '!';
+      const color = handlerInput.requestEnvelope.request.intent.slots.color.value + ' ';
+      const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value + '!';  
+      const SpeechStartText = "Poof! You are an amazing ";
+      const erSpeechText = erSpeechStartText + erColor + erAnimal;
+      const speechText = speechStartText + color + animal;
+      const speechOutput = "Entity Resolution: " + erSpeechText + ". User words: " + speechText + ".";
+      
+      return handlerInput.responseBuilder
+        .speak(speechOutput)
+        .getResponse();
+    }
+  };
+
+
 const MakeAnimalIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MakeAnimalIntent';
     },
     handle(handlerInput) {
-        const speakOutput = "Poooooof! You are an animal.";
+        const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value;
+
+        const speakOutput = "Poooooof! You are an amazing " + animal + "!";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -125,7 +171,7 @@ const ErrorHandler = {
         return true;
     },
     handle(handlerInput, error) {
-        const speakOutput = handlerInput.t('ERROR_MSG');
+        const speakOutput = 'An error occurred.';
         console.log(`~~~~ Error handled: ${JSON.stringify(error)}`);
 
         return handlerInput.responseBuilder
@@ -143,7 +189,9 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        MakeAnimalIntentHandler,
+        // MakeAnimalIntentHandler,
+        InProgressMakeAnimalIntent,
+        CompletedMakeAnimalIntent,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

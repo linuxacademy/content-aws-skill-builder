@@ -14,6 +14,7 @@ const LaunchRequestHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
+            .withSimpleCard('Fairy Godmother says: \n', speakOutput)
             .getResponse();
     }
 };
@@ -70,6 +71,7 @@ const InProgressMakeAnimalIntent = {
 
       return handlerInput.responseBuilder
         .speak(speechOutput)
+        .withSimpleCard('Fairy Godmother says: \n', speechText)  
         .getResponse();
     }
   };

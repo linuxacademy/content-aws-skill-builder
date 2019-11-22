@@ -70,8 +70,7 @@ const InProgressMakeAnimalIntent = {
       } 
 
       return handlerInput.responseBuilder
-        .speak(speechOutput)
-        .withSimpleCard('Fairy Godmother says: \n', speechText)  
+        .speak(speechOutput) 
         .getResponse();
     }
   };

@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "ac25f8328792b864c5c86d60280fd994"
+            "eTag": "6ee9fab8068f2965a22fa4cae9f7ea06"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "alexa-skill-fairy-godmother",
             "handler": "index.handler",
-            "revisionId": "3ba43b9b-3198-436b-80d3-eb8006af7869",
+            "revisionId": "ba94048a-97cc-4d46-b19c-d61b817ee887",
             "runtime": "nodejs8.10"
           }
         ]

@@ -3,7 +3,7 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "linux-academy-skill-template",
+          "name": "Need a name",
           "summary": "Sample Short Description",
           "description": "Sample Full Description",
           "examplePhrases": [
@@ -23,7 +23,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "linux-academy-skill-template"
+          "uri": "need a name"
         }
       }
     },

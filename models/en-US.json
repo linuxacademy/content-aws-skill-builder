@@ -34,21 +34,29 @@
                                 "i want to be an {animal}",
                                 "{animal}"
                             ]
-                        },
+                        }    
+                    ],
+                    "samples": [
+                       "make me an animal",
+                       "i want to be a {animal}",
+                       "i want to be an {animal}"
+                    ]
+                },
+                {
+                    "name": "ColorMeIntent",
+                    "slots": [
                         {
                             "name": "color",
                             "type": "ANIMAL_COLOR",
                             "samples": [
-                                "I want to be {color}",
+                                "turn me {color}",
                                 "{color}"
                             ]
                         }
                     ],
                     "samples": [
-                       "make me an animal",
-                       "i want to be a {animal}",
-                       "i want to be an {animal}",
-                       "i want to be {color}"
+                        "turn me {color}",
+                        "{color}"
                     ]
                 }
             ],
@@ -99,18 +107,25 @@
                         "prompts": {
                             "elicitation": "Elicit.Intent-MakeAnimalIntent.IntentSlot-animal"
                         }
-                    },
-                    {
-                        "name": "color",
-                        "type": "ANIMAL_COLOR",
-                        "elicitationRequired": true,
-                        "confirmationRequired": false,
-                        "prompts": {
-                            "elicitation": "Elicit.Intent-MakeAnimalIntent.IntentSlot-color"
-                        }
                     }
                 ]
-                }
+                },
+                {
+                    "name": "ColorMeIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "color",
+                            "type": "ANIMAL_COLOR",
+                            "elicitationRequired": true,
+                            "confirmationRequired": false,
+                            "prompts": {
+                                "elicitation": "Elicit.Intent-MakeAnimalIntent.IntentSlot-color"
+                            }
+                        }
+                    ]
+                    }
             ]
         },
         "prompts": [

@@ -46,34 +46,60 @@ const InProgressMakeAnimalIntent = {
     },
     handle(handlerInput) {
       
-      var er_success = true;
+      var attributes = {}
+      const speechStartText = "Poof! You are an amazing ";  
+      const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value + '!';
+      attributes.animal = animal
+      handlerInput.attributesManager.setSessionAttributes(attributes); 
+      const speechText = speechStartText + animal;
+
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .reprompt(speechText)
+        .getResponse();
+    }
+  };
+
+const InProgressColorMeIntent = {
+    canHandle(handlerInput) {
+      const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'ColorMeIntent'
+        && request.dialogState !== 'COMPLETED';
+    },
+    handle(handlerInput) {
+      const currentIntent = handlerInput.requestEnvelope.request.intent;
+  
+      return handlerInput.responseBuilder
+        .addDelegateDirective(currentIntent)
+        .getResponse();
+    }
+  };
+  
+  const CompletedColorMeIntent = {
+    canHandle(handlerInput) {
+      const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'ColorMeIntent'
+        && request.dialogState === 'COMPLETED';
+    },
+    handle(handlerInput) {
+      
+      const attributes = handlerInput.attributesManager.getSessionAttributes();
       const SpeechStartText = "Poof! You are an amazing ";
       const color = handlerInput.requestEnvelope.request.intent.slots.color.value + ' ';
-      const animal = handlerInput.requestEnvelope.request.intent.slots.animal.value + '!'; 
+      const animal = attributes.animal; 
       const speechText = SpeechStartText + color + animal;
       
-      try {
-        handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name;
-        handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name;
-      } catch(error) {
-          er_success = false;
-      }
-      
-      if (er_success) {
-        const erColor = handlerInput.requestEnvelope.request.intent.slots.color.resolutions.resolutionsPerAuthority[0].values[0].value.name + ' ';
-        const erAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.resolutions.resolutionsPerAuthority[0].values[0].value.name + '!';
-        const erSpeechText = SpeechStartText + erColor + erAnimal;
-        var speechOutput = "Entity Resolution: " + erSpeechText + ". User words: " + speechText + ".";
-      } else {
-        speechOutput = "Entity Resolution: No resolutions" + ". User words: " + speechText + ".";
-      } 
+      speechOutput = speechText
 
       return handlerInput.responseBuilder
         .speak(speechOutput)
         .getResponse();
     }
   };
-
 
 const MakeAnimalIntentHandler = {
     canHandle(handlerInput) {
@@ -205,11 +231,13 @@ exports.handler = Alexa.SkillBuilders.custom()
         // MakeAnimalIntentHandler,
         InProgressMakeAnimalIntent,
         CompletedMakeAnimalIntent,
+        InProgressColorMeIntent,
+        CompletedColorMeIntent,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
-        SessionEndedRequestHandler,
-        IntentReflectorHandler)
+        SessionEndedRequestHandler)
+        // IntentReflectorHandler)
     .addErrorHandlers(
         ErrorHandler)
     .lambda();

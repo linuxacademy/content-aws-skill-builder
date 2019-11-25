@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('WELCOME_MSG');
+        const speakOutput = "";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -24,7 +24,7 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('HELLO_MSG');
+        const speakOutput = "";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -39,7 +39,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('HELP_MSG');
+        const speakOutput = "";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -55,7 +55,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('GOODBYE_MSG');
+        const speakOutput = "";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -74,7 +74,7 @@ const FallbackIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('FALLBACK_MSG');
+        const speakOutput = "";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -109,7 +109,7 @@ const ErrorHandler = {
         return true;
     },
     handle(handlerInput, error) {
-        const speakOutput = handlerInput.t('ERROR_MSG');
+        const speakOutput = "Danger Will Robinson!";
         console.log(`~~~~ Error handled: ${JSON.stringify(error)}`);
 
         return handlerInput.responseBuilder

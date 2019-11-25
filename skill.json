@@ -3,13 +3,11 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "Need a name",
-          "summary": "Sample Short Description",
-          "description": "Sample Full Description",
+          "name": "platinum-vet-services",
+          "summary": "Platinum Veterinary Services",
+          "description": "Platinum Vaterinary Services",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open platinum vet services"
           ],
           "keywords": []
         }
@@ -23,7 +21,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "need a name"
+          "uri": "alexa-skill-platinum-vet-services"
         }
       }
     },

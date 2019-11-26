@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "exclusive vet",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -16,7 +16,7 @@
                     "samples": []
                 },
                 {
-                    "name": "WelcomePlatinumVetIntent",
+                    "name": "WelcomeExclusiveVetIntent",
                     "slots": [],
                     "samples": [
                         "hello"

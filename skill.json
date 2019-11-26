@@ -3,11 +3,11 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "platinum-vet-services",
-          "summary": "Platinum Veterinary Services",
-          "description": "Platinum Vaterinary Services",
+          "name": "exclusive-vet-services",
+          "summary": "Exclusive Veterinary Services",
+          "description": "Exclusive Vaterinary Services",
           "examplePhrases": [
-            "Alexa open platinum vet services"
+            "Alexa open exclusive vet services"
           ],
           "keywords": []
         }
@@ -21,7 +21,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "alexa-skill-platinum-vet-services"
+          "uri": "alexa-skill-exclusive-vet-services"
         }
       }
     },

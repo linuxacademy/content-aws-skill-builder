@@ -18,13 +18,13 @@ const LaunchRequestHandler = {
     }
 };
 
-const PlatinumVetIntentHandler = {
+const ExclusiveVetIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WelcomePlatinumVetIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WelcomeExclusiveVetIntent';
     },
     handle(handlerInput) {
-        const speakOutput = "Hello Platinum Veterinary Services staff.  I look forward to helping you serve your customers' needs.";
+        const speakOutput = "Hello Exclusive Veterinary Services staff.  I look forward to helping you serve your customers' needs.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -127,7 +127,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        PlatinumVetIntentHandler,
+        ExclusiveVetIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

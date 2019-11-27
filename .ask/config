@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "d6e4cbd8a5ce65aba08c27d785e45878"
+            "eTag": "c36e07d68c4f37eb5fa6eb9d546f03ca"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "linux-academy-course-intro",
             "handler": "index.handler",
-            "revisionId": "14e9cb98-7866-4a35-b3d5-f804477776ff",
+            "revisionId": "c10d17d4-fe8d-432f-9e37-237a990a61a4",
             "runtime": "nodejs8.10"
           }
         ]

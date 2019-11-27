@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "";
+        const speakOutput = "Welcome students! I am very happy you are interested in learning about me.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -18,13 +18,58 @@ const LaunchRequestHandler = {
     }
 };
 
-const HelloWorldIntentHandler = {
+const WhoAmIIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WhoAmIIntent';
     },
     handle(handlerInput) {
-        const speakOutput = "";
+        const speakOutput = "The first thing I think everyone should know, I am not the Alexa device in your home.  I live in the cloud. See the diagram on the right, I am the combination of the skill, artificial intelligence, machine learning and natural language processing.  All of this lives in the cloud, not on the Alexa device.";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const DeviceIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'DeviceIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = "An Alexa must have a microprocessor, speaker, and microphone. It's only purpose is to send me audio files and to play audio files I send back.";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const EssentialsIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'EssentialsIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = "To provide the best experience for customers, the essentials a Skill Builder should know are: the interaction model, custom intents and slots, dialog directive and entity resolution, cards for Alexa devices with screens, and state management or what I like to call attributes.";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const FinalCommentsIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'FinalCommentsIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = "Skill Builders should keep in mind that when people engage in a conversation they innately react as if the other side of the conversation is with a real person, so remember that skill users react as if I am a real person.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -143,7 +188,10 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
+        FinalCommentsIntentHandler,
+        EssentialsIntentHandler,
+        DeviceIntentHandler,
+        WhoAmIIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

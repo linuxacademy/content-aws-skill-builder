@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "course intro",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -24,16 +24,31 @@
                     "samples": []
                 },
                 {
-                    "name": "HelloWorldIntent",
+                    "name": "WhoAmIIntent",
                     "slots": [],
                     "samples": [
-                        "hello",
-                        "how are you",
-                        "say hi world",
-                        "say hi",
-                        "hi",
-                        "say hello world",
-                        "say hello"
+                        "tell us about yourself"
+                    ]
+                },
+                {
+                    "name": "DeviceIntent",
+                    "slots": [],
+                    "samples": [
+                        "what is an alexa device"
+                    ]
+                },
+                {
+                    "name": "EssentialsIntent",
+                    "slots": [],
+                    "samples": [
+                        "what are the essentials that a skill builder should know "    
+                    ]
+                },
+                {
+                    "name": "FinalCommentsIntent",
+                    "slots": [],
+                    "samples": [
+                        "any final comments"    
                     ]
                 }
             ],

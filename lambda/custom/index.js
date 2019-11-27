@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "I am Alexa.  Please say hello.";
+        const speakOutput = "Exclusive Veterinary Services welcomes you. You can say I want to register my pet.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -25,6 +25,21 @@ const ExclusiveVetIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = "Hello Exclusive Veterinary Services staff.  I look forward to helping you serve your customers' needs.";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const RegisterPetIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RegisterPetIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = "We are happy to help you register your pet.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -128,6 +143,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         ExclusiveVetIntentHandler,
+        RegisterPetIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

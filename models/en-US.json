@@ -23,6 +23,13 @@
           ]
         },
         {
+          "name": "RegisterPetIntent",
+          "slots": [],
+          "samples": [
+            "I want to register my pet"
+          ]
+        },
+        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         },

@@ -6,11 +6,11 @@
       "merge": {},
       "resources": {
         "manifest": {
-          "eTag": "b0a9478e179438aec73d100f4348fc2d"
+          "eTag": "848e60547da46640de18f4e56389200c"
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "d4548c36150c25a019af370df4ea384b"
+            "eTag": "e5280ebbc3abfda7dee3d5b0feb793c7"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "alexa-skill-exclusive-vet-services",
             "handler": "index.handler",
-            "revisionId": "a347164e-98dd-4f78-a057-f13c98baaf8b",
+            "revisionId": "02d07948-0a54-467d-99b4-567e85d79e7f",
             "runtime": "nodejs8.10"
           }
         ]

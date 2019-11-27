@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "04a6cfb5726100abdd18add7034d9d76"
+            "eTag": "f2c31083def7121e722c9904f967247e"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "alexa-skill-exclusive-vet-services",
             "handler": "index.handler",
-            "revisionId": "d1eb860e-1507-4426-a0f3-5293a154ca86",
+            "revisionId": "1468c36d-8fe9-4bcc-a39b-0e3325300324",
             "runtime": "nodejs8.10"
           }
         ]

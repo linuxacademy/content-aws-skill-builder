@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "Exclusive Veterinary Services welcomes you. You can say things like I want to register my dog named Scraps or I want to register my cat named Freckles.";
+        const speakOutput = "Exclusive Veterinary Services welcomes you. You can say I want to register my pet.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -42,6 +42,44 @@ const RegisterPetIntentHandler = {
         pet_type = handlerInput.requestEnvelope.request.intent.slots.pet_type.value
         pet_name = handlerInput.requestEnvelope.request.intent.slots.pet_name.value
         const speakOutput = "We are happy to welcome your " + pet_type + ' ' + pet_name + "!";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const InProgressRegisterPetIntentHandler = {
+    canHandle(handlerInput) {
+      const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'RegisterPetIntent'
+        && request.dialogState !== 'COMPLETED';
+    },
+    handle(handlerInput) {
+      const currentIntent = handlerInput.requestEnvelope.request.intent;
+  
+      return handlerInput.responseBuilder
+        .addDelegateDirective(currentIntent)
+        .getResponse();
+    }
+};
+  
+const CompletedRegisterPetIntentHandler = {
+    canHandle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+  
+      return request.type === 'IntentRequest'
+        && request.intent.name === 'RegisterPetIntent'
+        && request.dialogState === 'COMPLETED';
+    },
+    handle(handlerInput) {
+        pet_type = handlerInput.requestEnvelope.request.intent.slots.pet_type.resolutions.resolutionsPerAuthority[0].values[0].value.name
+        pet_name = handlerInput.requestEnvelope.request.intent.slots.pet_name.value
+        pet_breed = handlerInput.requestEnvelope.request.intent.slots.pet_type.value
+        const speakOutput = "We are happy to welcome your " + pet_breed + '. Your ' + pet_type + ' named ' + pet_name + " is registered!";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -145,7 +183,9 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         ExclusiveVetIntentHandler,
-        RegisterPetIntentHandler,
+        //RegisterPetIntentHandler,
+        InProgressRegisterPetIntentHandler,
+        CompletedRegisterPetIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

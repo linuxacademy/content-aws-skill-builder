@@ -27,15 +27,25 @@
           "slots": [
             {
               "name": "pet_type",
-              "type": "petType"
+              "type": "petType",
+              "samples": [
+                "i have a {pet_type}"
+              ]
             },
             {
               "name": "pet_name",
-              "type": "petName"
+              "type": "petName",
+              "samples": [
+                "his name is {pet_name}",
+                "her name is {pet_name}"
+              ]
             }
           ],
           "samples": [
-            "i want to register my {pet_type} named {pet_name}"
+            "i want to register my pet",
+            "i have a {pet_type}",
+            "his name is {pet_name}",
+            "her name is {pet_name}"
           ]
         },
         {
@@ -51,11 +61,24 @@
         {
             "name": "petType",
             "values": [
-                {
-                    "name": {
-                        "value": "pet_type"
-                    }
+              {
+                  "name": {
+                      "value": "dog",
+                      "synonyms": [
+                        "beagle",
+                        "greyhound"
+                      ]
+                  }
+              },
+              {
+                "name": {
+                    "value": "cat",
+                    "synonyms": [
+                      "ragdoll",
+                      "siamese"
+                    ]
                 }
+              }
             ]
         },
         {
@@ -69,6 +92,55 @@
             ]
         }
       ]
-    }
+    },
+    "dialog": {
+      "intents": [
+        {
+        "name": "RegisterPetIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+            {
+              "name": "pet_type",
+              "type": "petType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                  "elicitation": "Elicit.Intent-RegisterPetIntent.IntentSlot-pet_type"
+              }
+            },
+            {
+              "name": "pet_name",
+              "type": "petName",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                  "elicitation": "Elicit.Intent-RegisterPetIntent.IntentSlot-pet_name"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Intent-RegisterPetIntent.IntentSlot-pet_type",
+        "variations": [
+          {
+              "type": "PlainText",
+              "value": "We are limited to beagles, greyhounds, ragdolls, and siamese breeds. Which of these breeds do you want to register?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-RegisterPetIntent.IntentSlot-pet_name",
+        "variations": [
+          {
+              "type": "PlainText",
+              "value": "We love those.  One of our favorite breeds.  What is your pet's name?"
+          }
+        ]
+      }
+    ]
   }
 }

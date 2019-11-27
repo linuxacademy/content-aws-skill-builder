@@ -24,9 +24,18 @@
         },
         {
           "name": "RegisterPetIntent",
-          "slots": [],
+          "slots": [
+            {
+              "name": "pet_type",
+              "type": "petType"
+            },
+            {
+              "name": "pet_name",
+              "type": "petName"
+            }
+          ],
           "samples": [
-            "I want to register my pet"
+            "i want to register my {pet_type} named {pet_name}"
           ]
         },
         {
@@ -38,7 +47,28 @@
           "samples": []
         }
       ],
-      "types": []
+      "types": [
+        {
+            "name": "petType",
+            "values": [
+                {
+                    "name": {
+                        "value": "pet_type"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "petName",
+            "values": [
+                {
+                  "name": {
+                      "value": "pet_name"
+                   }
+                }
+            ]
+        }
+      ]
     }
   }
 }

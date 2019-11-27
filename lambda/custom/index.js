@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "Exclusive Veterinary Services welcomes you. You can say I want to register my pet.";
+        const speakOutput = "Exclusive Veterinary Services welcomes you. You can say things like I want to register my dog named Scraps or I want to register my cat named Freckles.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -39,7 +39,9 @@ const RegisterPetIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RegisterPetIntent';
     },
     handle(handlerInput) {
-        const speakOutput = "We are happy to help you register your pet.";
+        pet_type = handlerInput.requestEnvelope.request.slots.pet_type.values.name
+        pet_name = handlerInput.requestEnvelope.request.slots.pet_name.values.name
+        const speakOutput = "We are happy to welcome your " + pet_type + pet_name + "!";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

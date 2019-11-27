@@ -39,9 +39,9 @@ const RegisterPetIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RegisterPetIntent';
     },
     handle(handlerInput) {
-        pet_type = handlerInput.requestEnvelope.request.slots.pet_type.values.name
-        pet_name = handlerInput.requestEnvelope.request.slots.pet_name.values.name
-        const speakOutput = "We are happy to welcome your " + pet_type + pet_name + "!";
+        pet_type = handlerInput.requestEnvelope.request.intent.slots.pet_type.value
+        pet_name = handlerInput.requestEnvelope.request.intent.slots.pet_name.value
+        const speakOutput = "We are happy to welcome your " + pet_type + ' ' + pet_name + "!";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

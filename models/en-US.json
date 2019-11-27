@@ -34,14 +34,14 @@
                     "name": "DeviceIntent",
                     "slots": [],
                     "samples": [
-                        "what is an alexa device"
+                        "so you live in the cloud"
                     ]
                 },
                 {
                     "name": "EssentialsIntent",
                     "slots": [],
                     "samples": [
-                        "what are the essentials that a skill builder should know "    
+                        "what are the skill builder essentials"    
                     ]
                 },
                 {
@@ -49,6 +49,13 @@
                     "slots": [],
                     "samples": [
                         "any final comments"    
+                    ]
+                },
+                {
+                    "name": "ThanksIntent",
+                    "slots": [],
+                    "samples": [
+                        "thank you for introducing yourself"    
                     ]
                 }
             ],

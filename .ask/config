@@ -1,9 +1,33 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "",
+      "skill_id": "amzn1.ask.skill.5234d148-124f-4f7d-95c1-cebc0b1aa8c3",
       "was_cloned": false,
-      "merge": {}
+      "merge": {},
+      "resources": {
+        "manifest": {
+          "eTag": "53fd043701852e1331aabfc533a444f2"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "2f2cfb2da9934dda6ea4cd8d3fe95bd6"
+          }
+        },
+        "lambda": [
+          {
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:585804262281:function:linux-academy-course-intro",
+            "awsRegion": "us-east-1",
+            "codeUri": "lambda/custom",
+            "functionName": "linux-academy-course-intro",
+            "handler": "index.handler",
+            "revisionId": "63aa7348-b94d-45d3-931b-fd1839e269f7",
+            "runtime": "nodejs8.10"
+          }
+        ]
+      }
     }
   }
 }

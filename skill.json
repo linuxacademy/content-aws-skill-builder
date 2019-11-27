@@ -3,13 +3,11 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "linux-academy-skill-template",
+          "name": "linux-academy-course-intro",
           "summary": "Sample Short Description",
           "description": "Sample Full Description",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open course intro"
           ],
           "keywords": []
         }
@@ -23,7 +21,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "linux-academy-skill-template"
+          "uri": "linux-academy-course-intro"
         }
       }
     },

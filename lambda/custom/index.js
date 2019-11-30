@@ -14,6 +14,7 @@ const LaunchRequestHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
+            .withSimpleCard('Exclusive Vet Services', 'We are here for your fur-baby.')
             .getResponse();
     }
 };

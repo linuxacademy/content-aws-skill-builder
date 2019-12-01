@@ -83,14 +83,15 @@ const CompletedRegisterPetIntentHandler = {
 
         // Session attributes
         const vets = handlerInput.attributesManager.getSessionAttributes();
+        // Slot values
         pet_type = handlerInput.requestEnvelope.request.intent.slots.pet_type.resolutions.resolutionsPerAuthority[0].values[0].value.name
         pet_name = handlerInput.requestEnvelope.request.intent.slots.pet_name.value
         pet_breed = handlerInput.requestEnvelope.request.intent.slots.pet_type.value
-        console.log("dog: " + vets.dog + "cat: " + vets.cat)
-        console.log("Ternary Operator:")
-        console.log((pet_type === dog ? vets.dog : vets.cat))
-        const speechOutput1 = "We are happy to welcome your " + pet_breed + ". Your " + pet_type + " named " + pet_name + " is registered!";
-        const speechOutput1 = " The veterinarian for " + pet_name + "is " + (pet_type === dog ? vets.dog : vets.cat) + ".";
+
+        const speechOutput1 = "We are happy to welcome your " + pet_breed + ". Your " + pet_type + " named " + pet_name + " is registered! ";
+        const speechOutput2 = pet_name + "'s veterinarian is " + (pet_type === "dog" ? vets.dog : vets.cat) + ".";
+        const speakOutput = speechOutput1 + speechOutput2
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')

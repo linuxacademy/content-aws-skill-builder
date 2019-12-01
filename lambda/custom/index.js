@@ -9,6 +9,9 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
+        const vets = { "dog": "Dr. Kay Nine", "cat": "Dr. Fee Line" }
+        handlerInput.attributesManager.setSessionAttributes(vets); 
+
         const speakOutput = "Exclusive Veterinary Services welcomes you. You can say I want to register my pet.";
 
         return handlerInput.responseBuilder
@@ -77,11 +80,17 @@ const CompletedRegisterPetIntentHandler = {
         && request.dialogState === 'COMPLETED';
     },
     handle(handlerInput) {
+
+        // Session attributes
+        const vets = handlerInput.attributesManager.getSessionAttributes();
         pet_type = handlerInput.requestEnvelope.request.intent.slots.pet_type.resolutions.resolutionsPerAuthority[0].values[0].value.name
         pet_name = handlerInput.requestEnvelope.request.intent.slots.pet_name.value
         pet_breed = handlerInput.requestEnvelope.request.intent.slots.pet_type.value
-        const speakOutput = "We are happy to welcome your " + pet_breed + '. Your ' + pet_type + ' named ' + pet_name + " is registered!";
-
+        console.log("dog: " + vets.dog + "cat: " + vets.cat)
+        console.log("Ternary Operator:")
+        console.log((pet_type === dog ? vets.dog : vets.cat))
+        const speechOutput1 = "We are happy to welcome your " + pet_breed + ". Your " + pet_type + " named " + pet_name + " is registered!";
+        const speechOutput1 = " The veterinarian for " + pet_name + "is " + (pet_type === dog ? vets.dog : vets.cat) + ".";
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
